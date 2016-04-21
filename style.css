@@ -1,0 +1,17 @@
+body {
+	width : auto;
+	text-align : center;
+}
+
+h1{
+	height: 50px;
+	background: #33CCFF;
+	width: auto;
+
+}
+
+.step{
+	border-radius: 10px;
+	border-color: black;
+	font-size: 4;
+}
