@@ -16,6 +16,14 @@ var lowThreshold = G*0.9;
 
 var flag =0;
 
+var write = function(stepCount){
+	var Step = document.getElementById('step');
+	Step.innerHTML = stepCount;
+
+	var A = document.getElementById('AC');
+	A.innerHTML = acc;
+}(stepCount);
+
 window.addEventListener("devicemotion", function(event){
 
 
@@ -35,6 +43,10 @@ window.addEventListener("devicemotion", function(event){
 
 	}
 
+	write();
+
+
+
 	/*
 	var Step = document.getElementById('step');
 	Step.value = stepCount;
@@ -44,13 +56,7 @@ window.addEventListener("devicemotion", function(event){
 
 },true)
 
-var write = function(stepCount){
-	var Step = document.getElementById('step');
-	Step.innerHTML = stepCount;
 
-	var A = document.getElementById('AC');
-	A.innerHTML = acc;
-}
 
 </script>
 
