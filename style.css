@@ -10,11 +10,14 @@ h1{
 
 }
 
-#step{
+div{
 	height: 50px;
 	width: 70px;
 	border-radius: 10px;
 	border-color: black;
+}
+
+#step{
 	font-size: 20px;
 }
 
