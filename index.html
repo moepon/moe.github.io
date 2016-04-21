@@ -31,7 +31,7 @@ window.addEventListener("devicemotion", function(event){
 
 	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	if( flag === 0){
+	if(flag === 0){
 		if(acc<lowThreshold){
 			stepCount++;
 			flag = 1;
