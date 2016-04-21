@@ -27,7 +27,7 @@ var write = function(stepCount){
 window.addEventListener("devicemotion", function(event){
 
 
-	var ag = event. accelerationIncludingGravity;
+	var ag = event.accelerationIncludingGravity;
 
 	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
@@ -48,17 +48,12 @@ window.addEventListener("devicemotion", function(event){
 
 	var A = document.getElementById('AC');
 	A.innerHTML = acc;
-};
-
-
 
 	/*
 	var Step = document.getElementById('step');
 	Step.value = stepCount;
 	*/
 	
-
-
 },true)
 
 
