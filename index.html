@@ -19,35 +19,38 @@ var flag =0;
 window.addEventListener("devicemotion", function(event){
 
 
-var ag = event. accelerationIncludingGravity;
+	var ag = event. accelerationIncludingGravity;
 
-var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-if( flag === 0){
-if(acc<lowThreshold){
-stepCount++;
-flag = 1;
+	if( flag === 0){
+		if(acc<lowThreshold){
+			stepCount++;
+			flag = 1;
+		}
+	}else{
+		if(acc>hiThreshold){
+			flag = 0;
+		}
 
-}
-}else{
-if(acc>hiThreshold){
-flag = 0;
-}
+	}
 
-}
-
-/*
-var Step = document.getElementById('step');
-Step.value = stepCount;
-*/
-var Step = document.getElementById('step');
-Step.innerHTML = stepCount;
-
-var A = document.getElementById('AC');
-A.innerHTML = acc;
+	/*
+	var Step = document.getElementById('step');
+	Step.value = stepCount;
+	*/
+	
 
 
 },true)
+
+var write = function(stepCount){
+	var Step = document.getElementById('step');
+	Step.innerHTML = stepCount;
+
+	var A = document.getElementById('AC');
+	A.innerHTML = acc;
+}
 
 </script>
 
