@@ -20,9 +20,8 @@ var hiThreshold = G*1.1;
 var lowThreshold = G*0.9;
 
 var flag =0;
-	
 
-window.addEventListener("devicemotion", function(event){
+var calc = function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
@@ -41,20 +40,26 @@ window.addEventListener("devicemotion", function(event){
 
 	}
 
-	var Step = document.getElementById('step');
-	Step.innerHTML = stepCount;
+	return {acc: acc, st: stepCount}
+}
 
+	
+
+window.addEventListener("devicemotion",calc(event),true)
+
+var acc = calc[acc];
+var st = calc[st];
+
+
+(function(acc, st){
+
+	var Step = document.getElementById('step');
+	Step.innerHTML = st;
+ 
 	var A = document.getElementById('AC');
 	A.innerHTML = acc;
-
-	/*
-	var Step = document.getElementById('step');
-	Step.value = stepCount;
-	*/
 	
-},true)
-
-
+})(acc, st);
 
 </script>
 
