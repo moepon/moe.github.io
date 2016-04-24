@@ -40,26 +40,21 @@ var calc = function(event){
 
 	}
 
-	return {acc: acc, st: stepCount}
-}
-
-	
-
-window.addEventListener("devicemotion",calc(event),true)
-
-var acc = calc[acc];
-var st = calc[st];
-
-
-(function(acc, st){
 
 	var Step = document.getElementById('step');
 	Step.innerHTML = st;
  
 	var A = document.getElementById('AC');
 	A.innerHTML = acc;
+
+}
+
 	
-})(acc, st);
+
+window.addEventListener("devicemotion",calc(event),true)
+
+
+	
 
 </script>
 
