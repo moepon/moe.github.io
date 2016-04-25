@@ -13,6 +13,7 @@ h1{
 h3{
 	height: 70px;
 	width: 70px;
+	line-height: 70px;
 	margin: 0 auto;
 	border-radius: 10px;
 	border-color: black;
