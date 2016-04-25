@@ -19,6 +19,13 @@ div{
 	background-color: gray;
 }
 
+h3{
+	height : auto;
+	width: auto;
+	margin: 5px 5px;
+	font-size: 20px;
+}
+
 #step{
 	font-size: 20px;
 }
