@@ -22,9 +22,7 @@ var lowThreshold = G*0.7;
 var flag =0;
 
 
-window.addEventListener("devicemotion",calc(),true)
-
-var calc = function(event){
+window.addEventListener("devicemotion",function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
@@ -50,7 +48,7 @@ var calc = function(event){
 	var A = document.getElementById('AC');
 	A.innerHTML = acc;
 
-}
+},true)
 
 	
 
