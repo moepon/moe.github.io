@@ -10,21 +10,17 @@ h1{
 
 }
 
-div{
-	height: 50px;
+h3{
+	height: 70px;
 	width: 70px;
 	margin: 0 auto;
 	border-radius: 10px;
 	border-color: black;
 	background-color: gray;
-}
-
-h3{
-	height : auto;
-	width: auto;
-	margin: 5px 5px;
 	font-size: 20px;
 }
+
+
 
 #step{
 	font-size: 20px;
