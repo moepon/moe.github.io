@@ -3,10 +3,10 @@ body {
 	text-align : center;
 }
 
-h1{
+.title{
 	height: 50px;
-	background: #33CCFF;
-	width: auto;
+	width: 100px;
+	margin: 20px auto 20px auto;
 
 }
 
@@ -21,7 +21,10 @@ h3{
 	font-size: 20px;
 }
 
-
+h4{
+	height: ;
+	width: auto;
+}
 
 #step{
 	font-size: 20px;
@@ -29,4 +32,19 @@ h3{
 
 p{
 	text-decoration: underline;
+}
+
+#canvas_wrapper{
+	border-top-color: gray;
+	border-left-color: gray;
+	border-bottom-color: gray;
+	border-right-color: gray;
+	width: auto;
+	height: 185px;
+
+}
+
+#canvas{
+	width: auto;
+	height: 185px;
 }

@@ -7,7 +7,7 @@
 </head>
 
 <headr>
-<title>Count test</title>
+<h1>Count test</h1>
 </headr>
 
 <body>
@@ -20,15 +20,17 @@ var hiThreshold = G*1.5;
 var lowThreshold = G*0.7;
 
 var flag =0;
-
+var ag = Null;
+var acc = Null;
 
 window.addEventListener("devicemotion",function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
 
-	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+	acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
+/*
 	if(flag === 0){
 		if(acc<lowThreshold){
 			stepCount++;
@@ -44,13 +46,28 @@ window.addEventListener("devicemotion",function(event){
 
 	var Step = document.getElementById('step');
 	Step.innerHTML = stepCount;
- 
+ */
 	var A = document.getElementById('AC');
 	A.innerHTML = acc;
 
 },true)
 
+function getacc(){
+
+	if(acc){
+		setinterval(function(){
+			var accvalue = acc;
+			
+		}
+		)
+}
 	
+
+var cSizeW = cSizeH = window.parent.screen.width;
+var accvalueAxis = { now: 0, cy: 92, cx: 0, col:'#00ff00'};
+
+var Canvas = document.getElementById('canvas');
+accvalueAxis = Canvas.getContext('2d');
 
 
 
@@ -58,11 +75,14 @@ window.addEventListener("devicemotion",function(event){
 
 </script>
 
-<h1 id="title">歩数</h1>
+<h2>歩数</h2>
 <h3 id="step"></h3>
 
 
 <h4>加速度：<p id="AC"></p></h4>
+<div id="wrapper_canvas">
+<canvas id="canvas"></canvas>
+</div>
 
 
 
