@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width" />
+<style type="text/css"?
+
+body,div,span,table,tr,td,p,ul,li,dl,dt,dd { margin:0; padding:0; }
+
+h1,h2 { text-align: center;
+   top: 0; display: block;
+ }
+
+
+#LabelX, #LabelY, #LabelZ { position: absolute;  color: #888; font-size: 18px; }
+
+.div { height: 20px;
+     pading: 10px ;
+border-bottom-color: red;}
+
+#LabelX { left:65px;}
+#LabelY { left:145px; }
+#LabelZ { left:225px; }
+
+Canvas { 
+display: block;
+margin-top: 5px;
+}
+
+</style>
+<script type="text/javascript">
+
+$(function(){
+var cSizeW = cSizeH = 320;
+var xAxis = { now : 0, cy : 0, cx : 80,  col : '#ff0000' };
+var yAxis = { now : 0, cy : 0, cx : 160, col : '#00ff00' };
+var zAxis = { now : 0, cy : 0, cx : 240, col : '#0000ff' };
+
+var Canvas = document.getElementById('Canvas');
+xAxis.ctx = yAxis.ctx = zAxis.ctx = Canvas.getContext('2d');
+
+window.addEventListener("devicemotion", function(event) {
+
+ xAxis.now = event.acceleration.x * 10;
+yAxis.now = event.acceleration.y * 10;
+zAxis.now = event.acceleration.z * 10;
+
+//リセット
+if (xAxis.cy > cSizeH) {
+xAxis.ctx.clearRect(0,0,cSizeW,cSizeH);
+yAxis.ctx.clearRect(0,0,cSizeW,cSizeH);
+zAxis.ctx.clearRect(0,0,cSizeW,cSizeH);
+xAxis.cy = yAxis.cy = zAxis.cy = 0;
+       }
+
+
+// X軸
+xAxis.ctx.beginPath();
+xAxis.ctx.moveTo(xAxis.cx, xAxis.cy);
+xAxis.ctx.lineTo(xAxis.cx + xAxis.now, xAxis.cy ++);
+xAxis.ctx.strokeStyle = xAxis.col;
+xAxis.ctx.stroke();
+
+// Y軸
+yAxis.ctx.beginPath();
+yAxis.ctx.moveTo(yAxis.cx, yAxis.cy);
+yAxis.ctx.lineTo(yAxis.cx + yAxis.now, yAxis.cy ++);
+yAxis.ctx.strokeStyle = yAxis.col;
+yAxis.ctx.stroke();
+
+// Z軸
+zAxis.ctx.beginPath();
+zAxis.ctx.moveTo(zAxis.cx, zAxis.cy);
+zAxis.ctx.lineTo(zAxis.cx + zAxis.now, zAxis.cy ++);
+zAxis.ctx.strokeStyle = zAxis.col;
+zAxis.ctx.stroke();
+
+}, true);
+});
+
+</script>
+
+</head>
+
+
+<body>
+<h1>accelerometer</h1>
+
+<div class=div>
+<p id="LabelX">X軸</p>
+
+<p id="LabelY">Y軸</p>
+<p id="LabelZ">Z軸</p>
+</div>
+
+<canvas id="Canvas" width="320" height="320"></canvas>
+
+
+</body>
+</html>
+
+

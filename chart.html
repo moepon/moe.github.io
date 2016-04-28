@@ -1,9 +1,9 @@
 <html>
 
 <head>
-<meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
-<link rel='stylesheet' href='style.css' type='text/css'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <headr>
@@ -12,7 +12,7 @@
 
 <body>
 
-<script type='text/javascript'>
+<script type="text/javascript">
 
 var stepCount = 0;
 var G = 9.8;
@@ -30,7 +30,7 @@ var Canvas = document.getElementById('canvas');
 var accAxis.ctx = Canvas.getContext('2d');
 
 
-window.addEventListener('devicemotion',function(event){
+window.addEventListener("devicemotion",function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
@@ -57,7 +57,7 @@ window.addEventListener('devicemotion',function(event){
 	A.innerHTML = acc;
 	
 	if(acc){
-	setinterval('draw(acc)',25)	
+	setinterval("draw(acc)",25)	
 
 
 
@@ -81,15 +81,23 @@ function draw(acc){
 
 
 
+
+
+
+
+
+
+	
+
 </script>
 
 <h2>歩数</h2>
-<h3 id='step'></h3>
+<h3 id="step"></h3>
 
 
-<h4>加速度：<p id='AC'></p></h4>
-<div id='wrapper_canvas'>
-<canvas id='canvas'></canvas>
+<h4>加速度：<p id="AC"></p></h4>
+<div id="wrapper_canvas">
+<canvas id="canvas"></canvas>
 </div>
 
 
