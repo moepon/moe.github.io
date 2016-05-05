@@ -1,3 +1,4 @@
+
 body {
 	width : auto;
 	text-align : center;
@@ -35,12 +36,10 @@ p{
 }
 
 #canvas_wrapper{
-	border-top-color: gray;
-	border-left-color: gray;
-	border-bottom-color: gray;
-	border-right-color: gray;
+	border: solid 1px gray;
 	width: auto;
 	height: 185px;
+	overflow: scroll;
 
 }
 
