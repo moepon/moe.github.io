@@ -3,6 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel='stylesheet' href='style.css' type='text/css'>
 </head>
 
@@ -30,7 +31,7 @@ var Canvas = document.getElementById('canvas');
 var AccAxis.ctx = Canvas.getContext('2d');
 
 
-window.addEventListener('devicemotion',function(event){
+$(window.addEventListener('devicemotion',function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
@@ -57,17 +58,18 @@ window.addEventListener('devicemotion',function(event){
 	A.innerHTML = Acc;
 	
 	if(Acc){
-	setinterval('draw(Acc)',25)	
+	setinterval('draw(Acc)',25);
 	}
 
 
 
 },true);
+)
 
 
 
 
-function draw(acc){
+$(function draw(acc){
 	var accvalue = acc;
 
 	accAxis.now = accvalue*10;
@@ -78,7 +80,7 @@ function draw(acc){
 	accAxis.ctx.srtokeStyle = accAxis.col;
 	accAxis.ctx.stroke();
 
-}
+})
 
 
 
@@ -89,6 +91,8 @@ function draw(acc){
 
 
 <h4>加速度：<p id='AC'></p></h4>
+
+
 <div id='wrapper_canvas'>
 <canvas id='canvas'></canvas>
 </div>
