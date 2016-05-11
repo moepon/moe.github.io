@@ -26,7 +26,7 @@ var Prev = 0;
 
 
 
-effector = function(data){
+function effector(data){
 	var output = (Prev*0.92)+(data*0.08);
 
 	Prev = output;
@@ -38,11 +38,11 @@ window.addEventListener('devicemotion',function(event){
 
 	var ag = event.accelerationIncludingGravity;
 
-	var Acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	var lpfacc = effctor(Acc);
+	var lpfacc = effctor(acc);
 
-	if(flag === 0){
+	if(FLag === 0){
 		if(lpfacc<LowThreshold){
 			StepCount++;
 			Flag = 1;
