@@ -20,11 +20,10 @@ var HiThreshold = G*1.1;
 var LowThreshold = G*0.9;
 
 var Flag =0;
-var Ag;
-var Acc;
-
 
 var Prev = 0;
+
+
 
 
 effector = function(data){
@@ -39,9 +38,9 @@ window.addEventListener('devicemotion',function(event){
 
 	var ag = event.accelerationIncludingGravity;
 
-	Acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+	var Acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	lpfacc = effctor(Acc);
+	var lpfacc = effctor(Acc);
 
 	if(flag === 0){
 		if(lpfacc<LowThreshold){
