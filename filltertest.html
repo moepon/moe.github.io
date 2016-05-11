@@ -2,8 +2,7 @@
 
 <head>
 <meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <link rel='stylesheet' href='style.css' type='text/css'>
 </head>
 
@@ -24,11 +23,6 @@ var Flag =0;
 var Ag;
 var Acc;
 
-var CSizeW = CSizeH = window.parent.screen.width;
-var AccAxis = { now: 0, cy: 92, cx: 0, col:'#00ff00'};
-var Canvas = document.getElementById('canvas');
-
-var AccAxis.ctx = Canvas.getContext('2d');
 
 var Prev = 0;
 
@@ -47,15 +41,15 @@ window.addEventListener('devicemotion',function(event){
 
 	Acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	lpfacc = effctor(acc);
+	lpfacc = effctor(Acc);
 
 	if(flag === 0){
-		if(Acc<LowThreshold){
+		if(lpfacc<LowThreshold){
 			StepCount++;
 			Flag = 1;
 		}
 	}else{
-		if(Acc>HiThreshold){
+		if(lpfacc>HiThreshold){
 			Flag = 0;
 		}
 
@@ -66,14 +60,7 @@ window.addEventListener('devicemotion',function(event){
 	step.innerHTML = StepCount;
  
 	var A = document.getElementById('AC');
-	A.innerHTML = Acc;
-	
-
-//	if(Acc){
-//	setinterval('draw(Acc)',25);
-//	}
-
-
+	A.innerHTML = lpfacc;
 
 },true);
 
@@ -102,11 +89,6 @@ $(function draw(acc){
 
 
 <h4>加速度：<p id='AC'></p></h4>
-
-
-<div id='wrapper_canvas'>
-<canvas id='canvas'></canvas>
-</div>
 
 
 
