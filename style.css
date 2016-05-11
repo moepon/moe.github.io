@@ -4,7 +4,7 @@ body {
 	text-align : center;
 }
 
-.title{
+#title{
 	height: 50px;
 	width: 100px;
 	margin: 20px auto 20px auto;
@@ -31,7 +31,7 @@ h4{
 	font-size: 20px;
 }
 
-p{
+#AC{
 	text-decoration: underline;
 }
 
