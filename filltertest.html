@@ -30,13 +30,24 @@ var Canvas = document.getElementById('canvas');
 
 var AccAxis.ctx = Canvas.getContext('2d');
 
+var Prev = 0;
 
-$(window.addEventListener('devicemotion',function(event){
+
+effector = function(data){
+	var output = (Prev*0.92)+(data*0.08);
+
+	Prev = output;
+	return output;
+}
+
+window.addEventListener('devicemotion',function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
 
 	Acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+
+	lpfacc = effctor(acc);
 
 	if(flag === 0){
 		if(Acc<LowThreshold){
@@ -65,7 +76,6 @@ $(window.addEventListener('devicemotion',function(event){
 
 
 },true);
-)
 
 
 
