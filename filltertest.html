@@ -40,7 +40,7 @@ window.addEventListener('devicemotion',function(event){
 
 	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	var lpfacc = effctor(acc);
+	var lpfacc = effector(acc);
 
 	if(FLag === 0){
 		if(lpfacc<LowThreshold){
