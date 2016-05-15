@@ -3,16 +3,17 @@
 <head>
 <meta charset='utf-8'>
 
-<link rel='stylesheet' href='style.css' type='text/css'>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <headr>
-<h1>Count test</h1>
+<h1 id=title>Count test</h1>
 </headr>
 
 <body>
 
-<script type='text/javascript'>
+<script type="text/javascript">
 
 var StepCount = 0;
 var G = 9.8;
@@ -62,23 +63,6 @@ window.addEventListener('devicemotion',function(event){
 	A.innerHTML = lpfacc;
 
 },true);
-
-
-
-/*
-$(function draw(acc){
-	var accvalue = acc;
-
-	accAxis.now = accvalue*10;
-
-	accAxis.ctx.beginpath();
-	accAxis.ctx.moveTo(accAxis.cx, accAxis.cy);
-	accAxis.ctx.lineTo(accAxis.cx++, accAxis.cy+accAxis.now);
-	accAxis.ctx.srtokeStyle = accAxis.col;
-	accAxis.ctx.stroke();
-
-})
-*/
 
 
 </script>
