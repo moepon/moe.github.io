@@ -26,7 +26,7 @@ var Prev = 0;
 
 
 
-function effector(data,accdata){
+function effector(data){
 	var output = (Prev*0.92)+(data*0.08);
 
 	Prev = output;
@@ -45,13 +45,12 @@ function effector(data,accdata){
 
 //	return {theStepCount:StepCount, lpfacc:output}
 
-	var lpfacc = accdata;
 
 	var step = document.getElementById('step');
 	step.innerHTML = StepCount;
  
 	var A = document.getElementById('AC');
-	A.innerHTML = lpfacc;
+	A.innerHTML = output;
 
 
 }
@@ -64,7 +63,7 @@ window.addEventListener('devicemotion',function(event){
 	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
 //	var lpfacc = effector(acc);
-	setInterval(effector(acc,acc),10);
+	setInterval(effector(acc),10);
 
 
 
