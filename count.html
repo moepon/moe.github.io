@@ -1,68 +1,89 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta charset='utf-8'>
+
+<meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <headr>
-<title>Count test</title>
+<h1 id=title>Count test</h1>
 </headr>
 
 <body>
 
 <script type="text/javascript">
 
-var stepCount = 0;
 var G = 9.8;
-var hiThreshold = G*1.5;
-var lowThreshold = G*0.7;
+var HiThreshold = G*1.1;
+var LowThreshold = G*0.9;
 
-var flag =0;
+var Flag =0;
+var StepCount = 0;
+var Prev = 0;
+
+var accArray = [G,G,G,G]
 
 
-window.addEventListener("devicemotion",function(event){
+
+
+function effector(data){
+//	var output = (Prev*0.92)+(data*0.08);
+	accArray[3] = data;
+	var time = new Date;
+	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4
+	
+	accArray[0] = accArray[1];
+	accArray[1] = accArray[2];
+
+
+	if(Flag === 0){
+		if(output<LowThreshold){
+			Flag = 1;
+			if(time - T<1000){
+				StepCount++;
+				T = time;
+			}
+		}
+	}else{
+		if(output>HiThreshold){
+			Flag = 0;
+		}
+
+	}
+
+
+	var step = document.getElementById('step');
+	step.innerHTML = StepCount;
+ 
+	var A = document.getElementById('AC');
+	A.innerHTML = output;
+
+
+}
+
+window.addEventListener('devicemotion',function(event){
 
 
 	var ag = event.accelerationIncludingGravity;
 
 	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	if(flag === 0){
-		if(acc<lowThreshold){
-			stepCount++;
-			flag = 1;
-		}
-	}else{
-		if(acc>hiThreshold){
-			flag = 0;
-		}
-
-	}
-
-
-	var Step = document.getElementById('step');
-	Step.innerHTML = stepCount;
- 
-	var A = document.getElementById('AC');
-	A.innerHTML = acc;
-
-},true)
-
-	
+	setInterval(effector(acc),10);
 
 
 
-	
+},true);
+
 
 </script>
 
-<h1 id="title">歩数</h1>
-<h3 id="step"></h3>
+<h2>歩数</h2>
+<h3 id='step'></h3>
 
 
-<h4>加速度：<p id="AC"></p></h4>
+<h4>加速度：<p id='AC'></p></h4>
 
 
 
