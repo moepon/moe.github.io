@@ -1,0 +1,84 @@
+<html>
+
+<head>
+<meta charset='utf-8'>
+
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<headr>
+<h1 id=title>Count test</h1>
+</headr>
+
+<body>
+
+<script type="text/javascript">
+
+var G = 9.8;
+var HiThreshold = G*1.1;
+var LowThreshold = G*0.9;
+
+var Flag =0;
+var StepCount = 0;
+var Prev = 0;
+
+
+
+
+function effector(data,accdata){
+	var output = (Prev*0.92)+(data*0.08);
+
+	Prev = output;
+
+	if(Flag === 0){
+		if(output<LowThreshold){
+			StepCount++;
+			Flag = 1;
+		}
+	}else{
+		if(output>HiThreshold){
+			Flag = 0;
+		}
+
+	}
+
+//	return {theStepCount:StepCount, lpfacc:output}
+
+	var lpfacc = accdata;
+
+	var step = document.getElementById('step');
+	step.innerHTML = StepCount;
+ 
+	var A = document.getElementById('AC');
+	A.innerHTML = lpfacc;
+
+
+}
+
+window.addEventListener('devicemotion',function(event){
+
+
+	var ag = event.accelerationIncludingGravity;
+
+	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+
+//	var lpfacc = effector(acc);
+	setInterval(effector(acc,acc),10);
+
+
+
+},true);
+
+
+</script>
+
+<h2>歩数</h2>
+<h3 id='step'></h3>
+
+
+<h4>加速度：<p id='AC'></p></h4>
+
+
+
+</body>
