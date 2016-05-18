@@ -24,7 +24,7 @@ var StepCount = 0;
 var Prev = 0;
 
 var accArray = [G,G,G,G];
-var D = new Date;
+var BD = new Date;
 var BTime = D.getTime();
 
 
@@ -35,7 +35,8 @@ function outer(data){
 	accArray[3] = data;
 	
 	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
-	var otime = D.getTime();
+	var od = new Date;
+	var otime = od.getTime();
 	
 	accArray[0] = accArray[1];
 	accArray[1] = accArray[2];
