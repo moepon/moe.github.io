@@ -19,6 +19,8 @@ var G = 9.8;
 var HiThreshold = G*1.1;
 var LowThreshold = G*0.9;
 
+var accArray = [G,G,G,G];
+
 var Flag =0;
 var StepCount = 0;
 var Prev = 0;
@@ -27,7 +29,12 @@ var Prev = 0;
 
 
 function effector(data){
-	var output = (Prev*0.92)+(data*0.08);
+	accArray[3] = data;
+
+	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
+	
+	accArray[0] = accArray[1];
+	accArray[1] = accArray[2];
 
 	Prev = output;
 
