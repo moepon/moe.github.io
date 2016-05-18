@@ -13,66 +13,93 @@
 
 <body>
 
-<script type="text/javascript">
-
-var StepCount = 0;
-var G = 9.8;
-var HiThreshold = G*1.1;
-var LowThreshold = G*0.9;
-
-var Flag =0;
-
-var Prev = 0;
-
-
-
-
-function effector(data){
-	var output = (Prev*0.92)+(data*0.08);
-
-	Prev = output;
-	return output;
-}
-
-window.addEventListener('devicemotion',function(event){
-
-
-	var ag = event.accelerationIncludingGravity;
-
-	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
-
-	var lpfacc = effector(acc);
-
-	if(Flag === 0){
-		if(lpfacc<LowThreshold){
-			StepCount++;
-			Flag = 1;
-		}
-	}else{
-		if(lpfacc>HiThreshold){
-			Flag = 0;
-		}
-
-	}
-
-
-	var step = document.getElementById('step');
-	step.innerHTML = StepCount;
- 
-	var A = document.getElementById('AC');
-	A.innerHTML = lpfacc;
-
-},true);
-
-
-</script>
 
 <h2>歩数</h2>
 <h3 id='step'></h3>
 
 
 <h4>加速度：<p id='AC'></p></h4>
+<h5>時間：<p id='TIME'></p></h5>
 
 
 
+<script type="text/javascript">
+
+var G = 9.8;
+var HiThreshold = G*1.1;
+var LowThreshold = G*0.9;
+
+var Flag =0;
+var StepCount = 0;
+
+var accArray = [G,G,G,G];
+
+
+
+
+
+function outer(data){
+
+
+	var output = data;
+	var od = new Date;
+	var otime = od.getTime();
+	
+
+
+	if(Flag === 0){
+		if(output<LowThreshold){
+			Flag = 1;
+			BTime = otime;
+		}
+	}else{
+		if(output>HiThreshold){
+			Flag = 0;
+			if( otime - BTime<1000){
+				StepCount++;
+				BTime = otime;
+			}else{
+				BTime = otime;
+			}			
+		}
+
+	}
+
+
+
+
+	var step = document.getElementById('step');
+	step.innerHTML = StepCount;
+ 
+	var A = document.getElementById('AC');
+	A.innerHTML = output;
+
+	var T = document.getElementById('TIME');
+		T.innerHTML = BTime + ":" + otime;
+
+
+}
+
+var Output = window.addEventListener('devicemotion',function(event){
+
+
+	var ag = event.accelerationIncludingGravity;
+
+	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
+
+	accArray[3] = acc;
+	
+	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
+
+	return output;
+
+	accArray[0] = accArray[1];
+	accArray[1] = accArray[2];
+
+},true);
+
+setInterval(outer(Output),10);
+
+
+</script>
 </body>
