@@ -45,9 +45,11 @@ function outer(data){
 			Flag = 1;
 			if( otime - BTime<1000){
 				StepCount++;
-				BTime = time;
+				BTime = otime;
+				var T = document.getElementById('TIME');
+				T.innerHTML = BTime + ":" + otime;
 			}else{
-				BTime = time;
+				BTime = otime;
 			}
 		}
 	}else{
