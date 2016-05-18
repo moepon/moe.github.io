@@ -33,11 +33,11 @@ var Flag =0;
 var StepCount = 0;
 
 var accArray = [G,G,G,G];
-var BD = new Date;
-var BTime = BD.getTime();
+//var BD = new Date;
+//var BTime = BD.getTime();
 
-var T = document.getElementById('TIME');
-T.innerHTML = BTime;
+//var T = document.getElementById('TIME');
+//T.innerHTML = BTime;
 
 
 
@@ -56,22 +56,26 @@ function outer(data){
 
 	if(Flag === 0){
 		if(output<LowThreshold){
+			var T = document.getElementById('TIME');
+			T.innerHTML = BTime + ":" + otime;
+			BTime = otime;
 			Flag = 1;
+		}
+	}else{
+		if(output>HiThreshold){
+			Flag = 0;
 			if( otime - BTime<1000){
 				StepCount++;
-				
 
 				var T = document.getElementById('TIME');
 				T.innerHTML = BTime + ":" + otime;
 
 				BTime = otime;
 			}else{
+								var T = document.getElementById('TIME');
+				T.innerHTML = BTime + ":" + otime;
 				BTime = otime;
-			}
-		}
-	}else{
-		if(output>HiThreshold){
-			Flag = 0;
+			}			
 		}
 
 	}
