@@ -19,7 +19,7 @@
 
 
 <h4>加速度：<p id='AC'></p></h4>
-<h5>時間：<p id='TIME'>00:00:00</p></h5>
+<h5>時間：<p id='TIME'></p></h5>
 
 
 
@@ -56,8 +56,7 @@ function outer(data){
 
 	if(Flag === 0){
 		if(output<LowThreshold){
-			var T = document.getElementById('TIME');
-			T.innerHTML = BTime + ":" + otime;
+			
 			BTime = otime;
 			Flag = 1;
 		}
@@ -66,14 +65,8 @@ function outer(data){
 			Flag = 0;
 			if( otime - BTime<1000){
 				StepCount++;
-
-				var T = document.getElementById('TIME');
-				T.innerHTML = BTime + ":" + otime;
-
 				BTime = otime;
 			}else{
-								var T = document.getElementById('TIME');
-				T.innerHTML = BTime + ":" + otime;
 				BTime = otime;
 			}			
 		}
@@ -87,6 +80,8 @@ function outer(data){
 	var A = document.getElementById('AC');
 	A.innerHTML = output;
 
+	var T = document.getElementById('TIME');
+		T.innerHTML = BTime + ":" + otime;
 
 
 }
