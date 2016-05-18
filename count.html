@@ -44,9 +44,12 @@ var accArray = [G,G,G,G];
 
 function outer(data){
 //	var output = (Prev*0.92)+(data*0.08);
-	accArray[3] = data;
+
+//	accArray[3] = data;
 	
-	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
+//	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
+
+	var output = data;
 	var od = new Date;
 	var otime = od.getTime();
 	
