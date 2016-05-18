@@ -13,6 +13,16 @@
 
 <body>
 
+
+<h2>歩数</h2>
+<h3 id='step'></h3>
+
+
+<h4>加速度：<p id='AC'></p></h4>
+<h5>時間：<p id='TIME'>00:00:00</p></h5>
+
+
+
 <script type="text/javascript">
 
 var G = 9.8;
@@ -21,7 +31,6 @@ var LowThreshold = G*0.9;
 
 var Flag =0;
 var StepCount = 0;
-var Prev = 0;
 
 var accArray = [G,G,G,G];
 var BD = new Date;
@@ -93,14 +102,4 @@ window.addEventListener('devicemotion',function(event){
 
 
 </script>
-
-<h2>歩数</h2>
-<h3 id='step'></h3>
-
-
-<h4>加速度：<p id='AC'></p></h4>
-<h5>時間：<p id='TIME'></p></h5>
-
-
-
 </body>
