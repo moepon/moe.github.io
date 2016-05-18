@@ -53,15 +53,12 @@ function outer(data){
 	var od = new Date;
 	var otime = od.getTime();
 	
-	accArray[0] = accArray[1];
-	accArray[1] = accArray[2];
 
 
 	if(Flag === 0){
 		if(output<LowThreshold){
-			
-			BTime = otime;
 			Flag = 1;
+			BTime = otime;
 		}
 	}else{
 		if(output>HiThreshold){
@@ -75,6 +72,9 @@ function outer(data){
 		}
 
 	}
+
+	accArray[0] = accArray[1];
+	accArray[1] = accArray[2];
 
 
 	var step = document.getElementById('step');
