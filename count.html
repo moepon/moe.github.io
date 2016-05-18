@@ -24,16 +24,17 @@ var StepCount = 0;
 var Prev = 0;
 
 var accArray = [G,G,G,G];
-var T = new Date;
+var BTime = new Date;
 
 
 
 
-function effector(data){
+function outer(data){
 //	var output = (Prev*0.92)+(data*0.08);
 	accArray[3] = data;
-	var time = new Date;
+	
 	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
+	var otime = new Date;
 	
 	accArray[0] = accArray[1];
 	accArray[1] = accArray[2];
@@ -42,11 +43,11 @@ function effector(data){
 	if(Flag === 0){
 		if(output<LowThreshold){
 			Flag = 1;
-			if(time - T<1000){
+			if( otime - BTime<1000){
 				StepCount++;
-				T = time;
+				BTime = time;
 			}else{
-				T = time;
+				BTime = time;
 			}
 		}
 	}else{
@@ -63,6 +64,8 @@ function effector(data){
 	var A = document.getElementById('AC');
 	A.innerHTML = output;
 
+	var T = document.getElementById('TIME');
+	T.innerHTML = BTime + ":" + otime;
 
 }
 
@@ -73,7 +76,7 @@ window.addEventListener('devicemotion',function(event){
 
 	var acc = Math.sqrt(ag.x*ag.x + ag.y*ag.y +ag.z*ag.z);
 
-	setInterval(effector(acc),10);
+	setInterval(outer(acc),10);
 
 
 
@@ -87,6 +90,7 @@ window.addEventListener('devicemotion',function(event){
 
 
 <h4>加速度：<p id='AC'></p></h4>
+<h5>時間：<p id='TIME'></p></h5>
 
 
 
