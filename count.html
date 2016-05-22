@@ -44,11 +44,10 @@ var StepCount = 0;
 
 
 function outer(data){
-//	var output = (Prev*0.92)+(data*0.08);
 
-//	accArray[3] = data;
+	accArray[3] = data;
 	
-//	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
+	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
 
 	var output = data;
 	var od = new Date;
@@ -74,8 +73,8 @@ function outer(data){
 
 	}
 
-//	accArray[0] = accArray[1];
-//	accArray[1] = accArray[2];
+	accArray[0] = accArray[1];
+	accArray[1] = accArray[2];
 
 
 	var step = document.getElementById('step');
