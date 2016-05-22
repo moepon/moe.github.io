@@ -53,7 +53,7 @@ function outer(data){
 	}else{
 		if(output>HiThreshold){
 			Flag = 0;
-			if( otime - BTime <= 1000){
+			if( T - LT <= 1000){
 				StepCount++;
 				LT = T;
 			}			
