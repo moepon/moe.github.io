@@ -34,40 +34,28 @@ var StepCount = 0;
 
 var accArray = [G,G,G,G];
 
-//var BD = new Date;
-//var BTime = BD.getTime();
-
-//var T = document.getElementById('TIME');
-//T.innerHTML = BTime;
-
-
-
-
 function outer(data){
 
 	accArray[3] = data;
 	
 	var output = (accArray[0]+accArray[1]+accArray[2]+accArray[3])/4;
 
-	var output = data;
 	var od = new Date;
-	var otime = od.getTime();
+	var T = od.getTime();
 	
 
 
 	if(Flag === 0){
 		if(output<LowThreshold){
 			Flag = 1;
-			BTime = otime;
+			LT = T;
 		}
 	}else{
 		if(output>HiThreshold){
 			Flag = 0;
-			if( otime - BTime<1000){
+			if( otime - BTime <= 1000){
 				StepCount++;
-				BTime = otime;
-			}else{
-				BTime = otime;
+				LT = T;
 			}			
 		}
 
